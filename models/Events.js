@@ -11,32 +11,27 @@ Event.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
     },
-    date: {
+    dateStart: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+    /*dateEnd: {
+      type: DataTypes.DATE,
+    },*/
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'event',
   }
 );
 

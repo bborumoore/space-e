@@ -1,6 +1,6 @@
 // import models
 const Preference = require('./Preference');
-const Comments = require('./Comments');
+//const Comments = require('./Comments');
 const User = require('./User');
 const Events = require('./Events');
 
@@ -15,7 +15,7 @@ User.hasMany(Preference, {
 });
 
 // Comments belongs to one User
-Comments.belongsTo(User, {
+/*Comments.belongsTo(User, {
     foreignKey: 'user_id',
 });
   
@@ -43,11 +43,10 @@ Events.belongsTo(User, {
 User.hasMany(Events, {
     foreignKey: 'event_id',
     onDelete: 'CASCADE'
-})
+}) */
 
 module.exports = {
   Preference,
-  Comments,
   User,
   Events
 };

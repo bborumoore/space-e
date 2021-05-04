@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+
+  <title>Loading Screen</title>
+
+  <style>
+
+    /* Background tiled image from: https://1-background.com/stars_1.htm */
+
+    body {
+      background-image: url('stars-background.jpeg');
+    }
+    #rocket-emoji {
+      margin-left: 45%;
+      margin-right: 45%;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Alternatively, the div below could use bg-dark or another standard background -->
+  <div class="min-vh-100 d-flex align-items-center">
+
+    <section class="w-100 row justify-content-center">
+          <img id = "rocket-emoji" class = "mb-5" src = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/rocket_1f680.png">
+          <div class="progress w-75 custom-bar">
+            <div id = "loading-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+    </section>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src = "LoadingScreen.js"></script>
+</body>
+
+</html>

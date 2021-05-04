@@ -46,10 +46,10 @@ cron.schedule('0 0 21 * *', function() {
   });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Now listening on PORT ${PORT}`));
 });
 
-const {google} = require('googleapis');
+const { google } = require('googleapis');
 const googleAuth = require('google-auth-library');
 
 const auth = new googleAuth.GoogleAuth({
@@ -67,43 +67,43 @@ google.options({
 // Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
 // stored credentials.
 
-var event = {
-    'summary': 'Google I/O 2015',
-    'location': '800 Howard St., San Francisco, CA 94103',
-    'description': 'A chance to hear more about Google\'s developer products.',
-    'start': {
-      'dateTime': '2021-04-30T09:00:00-07:00',
-      'timeZone': 'America/Los_Angeles',
-    },
-    'end': {
-      'dateTime': '2021-04-30T17:00:00-07:00',
-      'timeZone': 'America/Los_Angeles',
-    },
-    'recurrence': [
-      'RRULE:FREQ=DAILY;COUNT=2'
-    ],
-    'reminders': {
-      'useDefault': false,
-      'overrides': [
-        {'method': 'email', 'minutes': 24 * 60},
-        {'method': 'popup', 'minutes': 10},
-      ],
-    },
-  };
+// var event = {
+//     'summary': 'Google I/O 2015',
+//     'location': '800 Howard St., San Francisco, CA 94103',
+//     'description': 'A chance to hear more about Google\'s developer products.',
+//     'start': {
+//       'dateTime': '2021-04-30T09:00:00-07:00',
+//       'timeZone': 'America/Los_Angeles',
+//     },
+//     'end': {
+//       'dateTime': '2021-04-30T17:00:00-07:00',
+//       'timeZone': 'America/Los_Angeles',
+//     },
+//     'recurrence': [
+//       'RRULE:FREQ=DAILY;COUNT=2'
+//     ],
+//     'reminders': {
+//       'useDefault': false,
+//       'overrides': [
+//         {'method': 'email', 'minutes': 24 * 60},
+//         {'method': 'popup', 'minutes': 10},
+//       ],
+//     },
+//   };
   
-  function sampleEvent(auth) {
-  const calendar = google.calendar({version: 'v3', auth});
-  calendar.events.insert({
-    auth: auth,
-    calendarId: 'space.eventhandler@gmail.com',
-    resource: event,
-  }, function(err, event) {
-    if (err) {
-      console.log('There was an error contacting the Calendar service: ' + err);
-      return;
-    }
-    console.log('Event created: %s', event.htmlLink);
-  });
-}
+//   function sampleEvent(auth) {
+//   const calendar = google.calendar({version: 'v3', auth});
+//   calendar.events.insert({
+//     auth: auth,
+//     calendarId: 'space.eventhandler@gmail.com',
+//     resource: event,
+//   }, function(err, event) {
+//     if (err) {
+//       console.log('There was an error contacting the Calendar service: ' + err);
+//       return;
+//     }
+//     console.log('Event created: %s', event.htmlLink);
+//   });
+// }
 
-sampleEvent(auth);
+// sampleEvent(auth);

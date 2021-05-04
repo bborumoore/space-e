@@ -3,6 +3,40 @@ const sequelize = require('../config/connection');
 
 class Event extends Model {}
 
+// Event.init(
+//   {
+//     id: {
+//       type: DataTypes.INTEGER,
+//       allowNull: false,
+//       primaryKey: true,
+//       autoIncrement: true,
+//     },
+//     location: {
+//       type: DataTypes.STRING,
+//       allowNull: false,
+//     },
+//     description: {
+//       type: DataTypes.STRING,
+//     },
+//     dateStart: {
+//       type: DataTypes.DATE,
+//       allowNull: false,
+//     },
+//     /*dateEnd: {
+//       type: DataTypes.DATE,
+//     },*/
+//   },
+//   {
+//     sequelize,
+//     timestamps: false,
+//     freezeTableName: true,
+//     underscored: true,
+//     modelName: 'event',
+//   }
+// );
+
+// Description is too long to store in the database
+
 Event.init(
   {
     id: {
@@ -11,20 +45,16 @@ Event.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    description: {
+    launch_name: {
       type: DataTypes.STRING,
     },
-    dateStart: {
+    launch_start: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    /*dateEnd: {
-      type: DataTypes.DATE,
-    },*/
+    launch_link: {
+      type: DataTypes.STRING
+    }
   },
   {
     sequelize,

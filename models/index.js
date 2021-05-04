@@ -10,7 +10,7 @@ Preference.belongsTo(User, {
 });
 
 // User have many preferences
-User.hasMany(Preference, {
+User.hasOne(Preference, {
   foreignKey: 'user_id'
 });
 

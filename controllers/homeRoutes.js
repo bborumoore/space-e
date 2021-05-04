@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Events, User, Preference, Comments } = require('../models');
+const { Events, User, Preference } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Two steps so that the loading screen is rendered when the application starts

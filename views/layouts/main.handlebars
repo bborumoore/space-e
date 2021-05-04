@@ -5,22 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spacee</title>
-  {{!-- <link rel="stylesheet" type = "text/css" href="/css/jass.css"> --}}
+
+  <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" type = "text/css" href="/css/style.css">
+
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
+        Spacee - Space events and news!
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
+        <a href ="/">Home</a>
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
+        <a href="/profile">Profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>

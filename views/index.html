@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Spacee</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link active" href="#">Login/ Sign Up <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Profile</a>
+              </div>
+            </div>
+          </nav>
+      </header>
+      <div class ="jumbotron jumbotron-fluid">
+      <div class="calender container">
+        <!-- Calendar goes here-->
+        <h1 class="display-4">
+            I am the calender place holder
+        </h1>
+        <div id="datepicker" class="place-holder lead"></div>
+      </div>
+      </div>
+      <div class= "comment-section">
+          <p>This is where the comment section will go with a form that will allow you write a comment.</p>
+        <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">SignUp for emails</label>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Write your Comment here</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form> 
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+    </script>
+  </body>
+</html>

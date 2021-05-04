@@ -10,6 +10,16 @@ launchesBtn.setAttribute("style", "margin-bottom: 7%;");
 
 let requestLaunches = "https://api.spacexdata.com/v4/launches/upcoming";
 
+const getUpcomingLaunches = async (event) => {
+  const response = await fetch(`/api/events`, {
+    method: 'POST',
+    body: JSON.stringify({ apiresponse }),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+};
+
 function getLaunches () {
     container.innerHTML = "";
 
@@ -20,49 +30,41 @@ function getLaunches () {
 
     .then(function(response) {
         console.log(response);
-        
-        for (let i = 0; i < response.length; i++) {
-            console.log(response[i].name);
 
-            // Google Calendar API format; need to have access to the working server
-            let event = {
-              'summary': response[i].name,
-              'description': 'Ready for launch in the next six months!',
-              'start': {
-                'dateTime': response[i].date_local,
-                'timezone': 'America/New_York',
-              },
-              'end': {
-                'dateTime': response[i].date_local,
-                'timezone': 'America/New_York',
-              },
-              'reminders': {
-                'userDefault': false,
-                'overrides': [
-                  {'method': 'email', 'minutes': 24 * 60},
-                  {'method': 'popup', 'minutes': 10},
-                ]
-              }
-            };
- 
+        for (let i = 0; i < response.length; i++) {
+          fetch('/api/events', {
+            method: 'POST',
+            body: JSON.stringify({'launch_name': response[i].name, 'launch_start': response[i].date_local, 'launch_link': response[i].links.wikipedia}),
+            headers: {
+              "Content-type": "application/json",
+            }
+          })
+        }
+      })
+
+        
+        // for (let i = 0; i < response.length; i++) {
+        //     console.log(response[i].name);
+        //     console.log(response[i].date_unix);
+
             // Formatted dates that correlate with a calendar
-            console.log(response[i].date_unix);
-            console.log(moment.unix(parseInt(response[i].date_unix)).format("MM/DD/YYYY"));
+            // console.log(response[i].date_unix);
+            // console.log(moment.unix(parseInt(response[i].date_unix)).format("MM/DD/YYYY"));
 
             // Elements created on the front end to see the API information
-            let smallDiv = document.createElement("div");
-            container.appendChild(smallDiv);
+            // let smallDiv = document.createElement("div");
+            // container.appendChild(smallDiv);
 
-            let h3 = document.createElement("h3");
-            h3.textContent = response[i].name;
-            smallDiv.appendChild(h3);
+            // let h3 = document.createElement("h3");
+            // h3.textContent = response[i].name;
+            // smallDiv.appendChild(h3);
 
-            let p = document.createElement("p");
-            p.textContent = moment.unix(parseInt(response[i].date_unix)).format("MM/DD/YYYY");
-            smallDiv.appendChild(p);
+            // let p = document.createElement("p");
+            // p.textContent = moment.unix(parseInt(response[i].date_unix)).format("MM/DD/YYYY");
+            // smallDiv.appendChild(p);
 
-        }
-  })
+        // }
+  // })
 }
 
 launchesBtn.addEventListener("click", getLaunches);

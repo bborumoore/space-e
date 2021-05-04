@@ -11,19 +11,15 @@ Preference.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    launches: {
+    spaceX: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    iss_view: {
+    iss: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    celestial: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-    plant_views: {
+    snapi: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },

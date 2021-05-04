@@ -1,0 +1,30 @@
+<div>
+    <h3>Profile</h3>
+    <h5>Name: {{name}}</h5>
+    <h5>Email: {{email}}</h5>
+    <div>
+        <h4>Preferences</h4>
+        <p>Check boxes for events you want to follow:</p>
+        <form>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="{{preference.spaceX}}" id="spaceX">
+                <label class="form-check-label" for="spaceX">
+                    SpaceX
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="{{preference.iss}}" id="iss">
+                <label class="form-check-label" for="iss">
+                    ISS
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="{{preference.snapi}}" id="snapi">
+                <label class="form-check-label" for="snapi">
+                    Snapi
+                </label>
+            </div>
+            <button>Update Preferences</button>
+        </form>
+    </div>
+</div>

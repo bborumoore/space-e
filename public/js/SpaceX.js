@@ -10,15 +10,15 @@ launchesBtn.setAttribute("style", "margin-bottom: 7%;");
 
 let requestLaunches = "https://api.spacexdata.com/v4/launches/upcoming";
 
-const getUpcomingLaunches = async (event) => {
-  const response = await fetch(`/api/events`, {
-    method: 'POST',
-    body: JSON.stringify({ apiresponse }),
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  })
-};
+// const getUpcomingLaunches = async (event) => {
+//   const response = await fetch(`/api/events`, {
+//     method: 'POST',
+//     body: JSON.stringify({ apiresponse }),
+//     headers: {
+//       'Content-Type': 'application/json',
+//     }
+//   })
+// };
 
 function getLaunches () {
     container.innerHTML = "";

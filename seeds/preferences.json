@@ -1,0 +1,20 @@
+[
+    {
+      "spaceX": true,
+      "iss": true,
+      "snapi": false,
+      "user_id": 2
+    },
+    {
+        "spaceX": true,
+        "iss": false,
+        "snapi": false,
+        "user_id": 3
+    },
+    {
+        "spaceX": true,
+        "iss": false,
+        "snapi": true,
+        "user_id": 1
+    }
+  ]

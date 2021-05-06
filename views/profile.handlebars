@@ -5,26 +5,31 @@
     <div id="prefs">
         <h3>Preferences</h3>
         <p>Check boxes for events you want to follow:</p>
-        <form>
+        <form class="form pref-form">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{preference.spaceX}}" id="spaceX">
+                <input class="form-check-input" type="checkbox" {{#if preference.spaceX}}checked{{/if}} id="spaceX">
                 <label class="form-check-label" for="spaceX">
                     SpaceX
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{preference.iss}}" id="iss">
+                <input class="form-check-input" type="checkbox" {{#if preference.iss}}checked{{/if}} id="iss">
                 <label class="form-check-label" for="iss">
                     ISS
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{preference.snapi}}" id="snapi">
+                <input class="form-check-input" type="checkbox" {{#if preference.snapi}}checked{{/if}} id="snapi">
                 <label class="form-check-label" for="snapi">
                     Snapi
                 </label>
             </div>
-            <button id="pref-btn">Update Preferences</button>
+            <button id="btn btn-primary" type="submit">Update Preferences</button>
         </form>
     </div>
 </div>
+
+<div id="user-id" hidden>{{id}}</div>
+<div id="pref-id" hidden>{{preference.id}}</div>
+
+<script src="./js/profile.js"></script>

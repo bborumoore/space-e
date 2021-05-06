@@ -7,7 +7,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
     try {
-      res.render('loading');
+      res.render('loading', {logged_in: req.session.logged_in});
     } catch (err) {
       console.log(err);
     }
@@ -62,7 +62,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('homepage', {
       ...user,
       logged_in: true
     });
@@ -74,11 +74,17 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/home');
     return;
   }
 
   res.render('login');
 });
+
+router.get('/logout', (req, res) => {
+   res.render('login');
+});
+
+
 
 module.exports = router;

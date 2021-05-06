@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <title>Document</title>
+
+    <style>
+        #img-container {
+            float: left;
+            width: 30%;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #content-container {
+            float: left;
+            width: 60%;
+            height: 500px;
+            padding: 10px;
+            border: 3px solid black;
+            overflow-y: scroll;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media screen and (max-width: 1200px) {
+            #img-container {
+                float: none;
+                width: 95%;
+                text-align: center;
+            }
+
+            #content-container {
+                float: none;
+                width: 95%;
+                margin-top: 5%;
+                margin-bottom: 5%;
+                padding: 20px;
+            }
+        
+        }
+    </style>
+</head>
+<body>
+    <h1>NASA AOTD TESTING</h1>
+
+    <div class="container">
+        <div id = 'sub-container'>
+          <div id = 'img-container'></div>
+          <div id = 'content-container'></div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src = "./public/js/NASA.js"></script>
+</body>
+</html>

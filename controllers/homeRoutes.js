@@ -6,37 +6,46 @@ const withAuth = require('../utils/auth');
 // The home page is then rendered second
 
 router.get('/', (req, res) => {
-    // if (req.session.logged_in) {
-    //     res.render('homepage', {  
-    //         logged_in: req.session.logged_in 
-    //       });
-    //     return;
-    //   }
-    //   res.redirect('/login');
-
     try {
-      // res.render('homepage');
       res.render('loading');
     } catch (err) {
       console.log(err);
     }
 });
 
-router.get('/home', (req, res) => {
-  // if (req.session.logged_in) {
-  //     res.render('homepage', {  
-  //         logged_in: req.session.logged_in 
-  //       });
-  //     return;
-  //   }
-  //   res.redirect('/login');
-
+router.get('/home', withAuth, (req, res) => {
   try {
     res.render('homepage', {logged_in: req.session.logged_in});
   } catch (err) {
     console.log(err);
   }
 });
+
+// Routes for the News page, ISS page, and POTD page
+
+router.get('/news', withAuth, (req, res) => {
+  try {
+    res.render('news', {logged_in: req.session.logged_in})
+  } catch (err) {
+    console.log(err);
+  }
+})
+
+router.get('/iss', withAuth, (req, res) => {
+  try {
+    res.render('iss', {logged_in: req.session.logged_in})
+  } catch (err) {
+    console.log(err);
+  }
+})
+
+router.get('/potd', withAuth, (req, res) => {
+  try {
+    res.render('potd', {logged_in: req.session.logged_in})
+  } catch (err) {
+    console.log(err);
+  }
+})
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {

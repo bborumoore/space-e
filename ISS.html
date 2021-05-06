@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <style>
+
+      @media screen and (max-width: 768px) {
+        #updates-title {
+          margin-top: 5%;
+        }
+      }
+
+    </style>
+
+    <title>ISS Information</title>
+
+</head>
+<body>
+  <div class="jumbotron jumbotron-fluid text-center bg-dark text-light">
+    <div class="container">
+      <h1 class="display-4">All About the International Space Station</h1>
+    </div>
+  </div>
+
+    <section id = 'custom-container' class="container my-5">
+        <div class="row">
+
+          <div id = 'sidebar-content' class="col-12 col-md-4 col-xl-4">
+            <h3 class = 'text-center mb-4'>Daily Summaries</h3>
+          </div>
+
+          <div id = "iss-stats-container" class="col-12 col-md-8 col-xl-8">
+            <h3 id = 'updates-title' class = "text-center">International Space Station Updates</h3>
+            <h5 class = 'text-center'>Below, find out where the International Space Station is right now!</h5>
+
+            <table class="table table-dark text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">Key Statistic</th>
+                    <th scope="col">Current Information as of <span id = 'iss-date'></span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Altitude</th>
+                    <td id = 'iss-altitude'></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Latitude</th>
+                    <td id = 'iss-latitude'></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Longitude</th>
+                    <td id = 'iss-longitude'></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Location</th>
+                    <td id = 'iss-location'></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Velocity (kilometers/hour)</th>
+                    <td id = 'iss-speed'></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3 class = 'text-center mt-5 mb-5'>Astronauts in the Expedition 65 Crew:</h3>
+              <ul>
+                <li><a href = 'https://www.nasa.gov/astronauts/biographies/michael-s-hopkins' target = '_blank'>
+                  Michael Hopkins</a>, who recently returned from Resilience on May 2, 2021</li>
+                <li><a href = 'https://www.nasa.gov/astronauts/biographies/victor-j-glover' target = '_blank'>
+                  Victor Glover</a>, who recently returned from Resilience on May 2, 2021</li>
+                <li><a href = 'https://www.nasa.gov/astronauts/biographies/walker-shannon' target = '_blank'>
+                  Shannon Walker</a>, who was also a part of the Expedition 24/25 mission (163 days on the ISS)</li>
+                <li><a href = 'https://iss.jaxa.jp/en/astro/biographies/noguchi/index.html' target = '_blank'>
+                  Soichi Noguchi</a>, who was selected as an astronaut candidate by the National Space Development Agency of Japan in 1996</li>
+                <li><a href = 'https://www.nasa.gov/astronauts/biographies/mark-t-vande-hei' target = '_blank'>
+                  Mark Vande Hei</a>, who has also served as a combat engineer</li>
+                <li><a href = 'https://en.wikipedia.org/wiki/Oleg_Novitsky' target = '_blank'>
+                  Oleg Novitsky</a>, who has spent over 340 days in space</li>
+                <li><a href = 'https://en.wikipedia.org/wiki/Pyotr_Dubrov' target = '_blank'>
+                  Pyotr Dubrov</a>, who has also worked as a senior software engineer</li>
+                <li><a href = 'https://www.nasa.gov/astronauts/biographies/robert-shane-kimbrough' target = '_blank'>
+                  Shane Kimbrough</a>, who has logged 189 days in space and has performed several spacewalks</li>
+                <li><a href = 'https://www.nasa.gov/astronauts/biographies/k-megan-mcarthur' target = '_blank'>
+                  Megan McArthur</a>, who has a Ph.D. in Oceanography from the University of California, San Diego</li>
+                <li><a href = 'https://blogs.esa.int/exploration/category/astronauts/thomas-pesquet/' target = '_blank'>
+                  Thomas Pesquet</a>, who is currently training for his second mission</li>
+                <li><a href = 'https://iss.jaxa.jp/en/astro/biographies/hoshide/index.html' target = '_blank'>
+                  Akihiko Hoshide</a>, who was the head of JAXA Astronaut Group from April 2016 – October 2016</li>
+              </ul>
+
+              <iframe class = 'col-12 col-md-12 col-xl-12 mt-5' width="730" height="315" src="https://www.youtube.com/embed/jCYeyqailf4" 
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+              encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          </div>
+        </div>
+      </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src = "./public/js/ISS.js"></script>
+</body>
+</html>

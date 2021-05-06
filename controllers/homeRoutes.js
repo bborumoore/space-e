@@ -32,7 +32,7 @@ router.get('/home', (req, res) => {
   //   res.redirect('/login');
 
   try {
-    res.render('homepage');
+    res.render('homepage', {logged_in: req.session.logged_in});
   } catch (err) {
     console.log(err);
   }
@@ -44,6 +44,11 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
+      include: [
+        {
+          model: Preference,
+        },
+      ],
     });
 
     const user = userData.get({ plain: true });

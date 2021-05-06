@@ -1,9 +1,17 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Preference } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
+    const user = userData.get({ plain: true });
+    const prefData = await Preference.create({
+      user_id: user.id,
+      spaceX: false,
+      iss: false,
+      snapi: false,
+    });
+    const pref = prefData.get({ plain: true });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -58,27 +66,24 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/:user_id', (req, res) => {
-  User.update(
-    {
-      // All the fields you can update and the data attached to the request body.
-      name: req.body.name,
-      spaceX: req.body.spaceX,
-      iss: req.body.iss,
-      snapi: req.body.snapi
-    },
-    {
-  
-      where: {
-        user_id: req.params.user_id,
-      },
+router.put('/:user_id', async (req, res) => {
+  try {
+    const userData = await User.update(req.body,
+      {
+        where: {
+          id: req.params.user_id,
+        },
+      }
+    );
+
+    if (!userData[0]) {
+      res.status(404).json({message: "No user with this id!"});
     }
-  )
-    .then((updatedUser) => {
-      // Sends the updated user as a json response
-      res.json(updatedUser);
-    })
-    .catch((err) => res.json(err));
+    
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    res.status(400).json(err)
+  }
 });
 
 module.exports = router;

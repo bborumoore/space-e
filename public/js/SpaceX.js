@@ -1,6 +1,5 @@
 let container = document.getElementById("container");
 
-// All launches do have a name of the ship and the date
 // Dates currently range from April 2021 - September 2021 at time of testing (6 months)
 
 let requestLaunches = "https://api.spacexdata.com/v4/launches/upcoming";

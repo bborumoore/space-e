@@ -14,8 +14,6 @@ function getArticles () {
     })
 
     .then(function(response) {
-        console.log(response);
-
         for (let i = 0; i < response.length; i++) {
             let smallDiv = document.createElement("div");
             smallDiv.classList.add('small-div');

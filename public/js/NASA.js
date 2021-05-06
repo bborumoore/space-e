@@ -11,12 +11,10 @@ function getPictures () {
     })
 
     .then(function(response) {
-        console.log(response);
-
         let img = document.createElement('img');
         imgContainer.appendChild(img);
         img.setAttribute('src', response.hdurl);
-        img.setAttribute('style', 'height: 500px;');
+        img.setAttribute('style', 'width: 500px; max-height: 100%;');
         img.setAttribute('alt', 'NASA Astronomy Image of the Day');
 
         let h2 = document.createElement('h2');
@@ -29,7 +27,7 @@ function getPictures () {
 
         let p2 = document.createElement('p');
         contentContainer.appendChild(p2);
-        p2.textContent = response.date;
+        p2.textContent = moment(response.date).format('MMMM Do YYYY');
 
         let p3 = document.createElement('p');
         contentContainer.appendChild(p3);

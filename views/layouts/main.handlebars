@@ -20,16 +20,37 @@
       <h1>
         Spacee - Space events and news!
       </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        <a href ="/home">Home</a>
-        {{#if logged_in}}
-        <a href="/profile">Profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand custom-monospace" href="/">🚀 SPACEE</a>
+      
+        <div class="navbar-collapse d-flex justify-content-end custom-nav" id="main-navbar">
+            <ul class="nav nav-pills nav-fill custom-nav" id = 'custom-nav-ul'>
+                <li class="nav-item ml-5 mr-5 custom-nav-li">
+                  <a class="nav-link" href="/home">HOME</a>
+                </li>
+                <li class="nav-item ml-5 mr-5 custom-nav-li">
+                  <a class="nav-link" href="/news">NEWS</a>
+                </li>
+                <li class="nav-item ml-5 mr-5 custom-nav-li">
+                  <a class="nav-link" href="/iss">ISS</a>
+                </li>
+                <li class="nav-item ml-5 mr-5 custom-nav-li">
+                  <a class="nav-link" href="/potd">PHOTO OF THE DAY</a>
+                </li>
+                {{#if logged_in}}
+                <li class="nav-item ml-5 mr-5 custom-nav-li">
+                  <a class="nav-link" id = 'logout' href="/logout">LOG OUT</a>
+                </li>
+                {{else}}
+                <li class="nav-item ml-5 mr-5 custom-nav-li">
+                  <a class="nav-link" href="/login">LOG IN</a>
+                </li>
+                {{/if}}
+              </ul>
+        </div>
+    </nav>
+
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->

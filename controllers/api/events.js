@@ -1,9 +1,13 @@
 const router = require('express').Router();
 const { Events } = require('../../models');
 const axios = require('axios');
+const util = require('util');
 
 const { google } = require('googleapis');
 const googleAuth = require('google-auth-library');
+const { CronJob } = require('cron');
+const cron = require('node-cron');
+
 
 const auth = new googleAuth.GoogleAuth({
   keyFile: 'calendar/quickstart/credentials.json',
@@ -15,58 +19,86 @@ google.options({
     auth: auth
 });
 
-axios.get('https://api.spacexdata.com/v4/launches/upcoming')
-.then(function(response) {
+const calendar = google.calendar({version: 'v3', auth});
 
-    for (const element in response.data) {
+calendar.events.insert = util.promisify(calendar.events.insert);
+
+// Cron job is scheduled to run at midnight on the start of the 10th of every month
+cron.schedule('0 0 10 * *', function () {
+  console.log('---------------------');
+  console.log('\nRunning Cron Job');
+
+  //This pulls data from the next 6 months of SpaceX from their api
+  axios.get('https://api.spacexdata.com/v4/launches/upcoming')
+    .then(async function (response) {
+
+      //iterates over the received data to create an 'event' formatted for Google calendar API
+      //then passes that event to a promisify'd function
+      for (const element in response.data) {
         // console.log(response.data[element].name);
         // console.log(response.data[element].date_local);
         // console.log(response.data[element].links.wikipedia);
 
         const event = {
-            'summary': `${response.data[element].name}`,
-            'description': `${response.data[element].links.wikipedia}`,
-            'start': {
+          'summary': `${response.data[element].name}`,
+          'description': `${response.data[element].links.wikipedia}`,
+          'start': {
             'dateTime': `${response.data[element].date_local}`,
             'timeZone': 'America/New_York',
-            },
-            'end': {
+          },
+          'end': {
             'dateTime': `${response.data[element].date_local}`,
             'timeZone': 'America/Chicago',
-            },
-            'reminders': {
+          },
+          'reminders': {
             'useDefault': false,
             'overrides': [
-                {'method': 'email', 'minutes': 24 * 60},
-                {'method': 'popup', 'minutes': 10},
+              { 'method': 'email', 'minutes': 24 * 60 },
+              { 'method': 'popup', 'minutes': 10 },
             ],
-            },
+          },
         };
+
+
 
         // setTimeout(sampleEvent, 3000, auth);
 
-        sampleEvent(event, function() {
-            continue
-        });
 
-    }
+        await sampleEvent(event);
+      }
 
+    })
 })
 
-function sampleEvent(newEvent, callBack) {
-    const calendar = google.calendar({version: 'v3', auth});
-    calendar.events.insert({
-        auth: auth,
-        calendarId: 'space.eventhandler@gmail.com',
-        resource: newEvent,
-    }, function(err, event) {
-        if (err) {
-        console.log('There was an error contacting the Calendar service: ' + err);
-        return;
-        }
-        console.log('Event created: %s', event.htmlLink);
-        callBack()
-    });
+
+
+  
+//Promisify'd google calendar API call to create event passed into the function
+async function sampleEvent(newEvent) {
+  try {
+    const event = await calendar.events.insert({
+    auth: auth,
+    calendarId: 'space.eventhandler@gmail.com',
+    resource: newEvent
+  });
+  
+    console.log('Event created: %s', event);
+} catch(err) {
+  console.log('There was an error contacting the Calendar service: ' + err);
+}
+
+  // await calendar.events.insert({
+  //   auth: auth,
+  //   calendarId: 'space.eventhandler@gmail.com',
+  //   resource: newEvent,
+  // }, function(err, event) {
+  //   if (err) {
+  //   console.log('There was an error contacting the Calendar service: ' + err);
+  //   return;
+  //   }
+  //   console.log('Event created: %s', event.summary);
+        
+  //   });
 }
 
 // router.post('/api/events', async (req, res) => {

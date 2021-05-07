@@ -24,7 +24,7 @@ const calendar = google.calendar({version: 'v3', auth});
 calendar.events.insert = util.promisify(calendar.events.insert);
 
 // Cron job is scheduled to run at midnight on the start of the 10th of every month
-cron.schedule('0 0 10 * *', function () {
+cron.schedule('0 0 07 * *', function () {
   console.log('---------------------');
   console.log('\nRunning Cron Job');
 

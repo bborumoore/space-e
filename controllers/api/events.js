@@ -7,7 +7,7 @@ const { google } = require('googleapis');
 const googleAuth = require('google-auth-library');
 const { CronJob } = require('cron');
 const cron = require('node-cron');
-
+const { Console } = require('console');
 
 const auth = new googleAuth.GoogleAuth({
   keyFile: 'calendar/quickstart/credentials.json',

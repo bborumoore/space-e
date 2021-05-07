@@ -1,10 +1,10 @@
 # Spacee- Space News and Events
 
 ## Authors: 
-[Valerie Russell] (https://github.com/vruss14)
-[Brian Moore] (https://github.com/bborumoore)
-[Nishad Kurup] (https://github.com/Nishadkurup)
-[Claire Phillips] (https://github.com/ClairePhillips51)
+[Valerie Russell](https://github.com/vruss14)
+[Brian Moore](https://github.com/bborumoore)
+[Nishad Kurup](https://github.com/Nishadkurup)
+[Claire Phillips](https://github.com/ClairePhillips51)
 
 ## Link To Application
 Link to Heroku: [Spacee](https://space-e.herokuapp.com/)

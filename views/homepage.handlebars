@@ -5,6 +5,15 @@
         style="border: 0" width="1100" height="700" frameborder="0" scrolling="no" id="calendar-iframe"></iframe>
 </div>
 
+<section class="mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Upcoming Launches (Live)</h2>
+        <button id="refresh-launches" type="button" class="btn btn-sm btn-outline-light">Refresh</button>
+    </div>
+    <p id="launch-feed-status" class="text-light mb-3">Loading upcoming launches...</p>
+    <div id="launch-feed" class="row"></div>
+</section>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>

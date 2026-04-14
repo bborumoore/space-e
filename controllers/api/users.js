@@ -1,17 +1,17 @@
 const router = require('express').Router();
 const { User, Preference } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
     const user = userData.get({ plain: true });
-    const prefData = await Preference.create({
+    await Preference.create({
       user_id: user.id,
       spaceX: false,
       iss: false,
       snapi: false,
     });
-    const pref = prefData.get({ plain: true });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -61,29 +61,40 @@ router.post('/logout', (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
-    res.render('loading');
   } else {
     res.status(404).end();
   }
 });
 
-router.put('/:user_id', async (req, res) => {
+router.put('/:user_id', withAuth, async (req, res) => {
   try {
+    const routeUserId = Number(req.params.user_id);
+    if (routeUserId !== req.session.user_id) {
+      res.status(403).json({ message: 'You can only update your own account.' });
+      return;
+    }
+
     const userData = await User.update(req.body,
       {
         where: {
-          id: req.params.user_id,
+          id: routeUserId,
         },
+        individualHooks: true,
       }
     );
 
     if (!userData[0]) {
       res.status(404).json({message: "No user with this id!"});
+      return;
     }
     
+    const updatedUser = await User.findByPk(routeUserId, {
+      attributes: { exclude: ['password'] }
+    });
+
     res.status(200).json(updatedUser);
   } catch (err) {
-    res.status(400).json(err)
+    res.status(400).json(err);
   }
 });
 

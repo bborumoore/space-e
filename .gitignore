@@ -71,6 +71,8 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+.env.local
+.env.production
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -104,5 +106,9 @@ dist
 .tern-port
 
 credentials.json
+calendar/quickstart/credentials.json
+calendar/quickstart/token.json
+calendar/quickstart/*.pem
+calendar/quickstart/*.key
 
 .DS_Store

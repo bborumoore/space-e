@@ -82,7 +82,13 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-   res.render('login');
+   if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.redirect('/login');
+    });
+    return;
+   }
+   res.redirect('/login');
 });
 
 
